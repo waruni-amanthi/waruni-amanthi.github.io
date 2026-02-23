@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Waruni Amanthi | Portfolio & Blog</title>
 
 <!-- Fonts & Icons -->
@@ -10,180 +10,161 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
 }
 
-body {
-  font-family: 'Inter', sans-serif;
-  background: #0a192f;
-  color: #ccd6f6;
-  scroll-behavior: smooth;
+body{
+  font-family:'Inter',sans-serif;
+  background:#0a192f;
+  color:#ccd6f6;
+  scroll-behavior:smooth;
 }
 
-a {
-  text-decoration: none;
-  color: inherit;
+a{text-decoration:none;color:inherit}
+
+/* ===== Sidebar ===== */
+nav{
+  position:fixed;
+  left:0;
+  top:0;
+  width:90px;
+  height:100vh;
+  background:#020c1b;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  padding-top:30px;
+  z-index:1000;
 }
 
-/* Sidebar */
-nav {
-  position: fixed;
-  left: 0;
-  top: 0;
-  width: 90px;
-  height: 100vh;
-  background: #020c1b;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding-top: 30px;
+nav a{
+  margin:18px 0;
+  font-size:1.4em;
+  color:#8892b0;
+  transition:0.3s;
 }
 
-nav a {
-  margin: 20px 0;
-  font-size: 1.4em;
-  color: #8892b0;
-  transition: 0.3s;
+nav a.active,
+nav a:hover{
+  color:#64ffda;
 }
 
-nav a:hover {
-  color: #64ffda;
+/* ===== Layout ===== */
+main{margin-left:90px}
+
+section{
+  min-height:100vh;
+  padding:90px 80px;
+  max-width:1100px;
+  opacity:0;
+  transform:translateY(40px);
+  transition:1s;
 }
 
-/* Main Layout */
-main {
-  margin-left: 90px;
+section.visible{
+  opacity:1;
+  transform:translateY(0);
 }
 
-section {
-  min-height: 100vh;
-  padding: 80px 60px;
-  opacity: 0;
-  transform: translateY(40px);
-  transition: 1s;
+/* ===== Headings ===== */
+h1{font-size:3rem;color:#64ffda}
+h2{font-size:2rem;color:#64ffda;margin-bottom:20px}
+
+p{
+  max-width:650px;
+  line-height:1.7;
+  color:#8892b0;
 }
 
-section.visible {
-  opacity: 1;
-  transform: translateY(0);
+/* ===== Home ===== */
+#home{
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
 }
 
-/* Headings */
-h1, h2 {
-  color: #64ffda;
+.socials{
+  margin-top:25px;
 }
 
-h2 {
-  margin-bottom: 20px;
+.socials a{
+  font-size:1.6em;
+  margin-right:20px;
 }
 
-/* Home */
-#home {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+.btn{
+  margin-top:35px;
+  display:inline-block;
+  padding:12px 24px;
+  border:1px solid #64ffda;
+  border-radius:5px;
+  color:#64ffda;
+  transition:0.3s;
 }
 
-#home h1 {
-  font-size: 3rem;
+.btn:hover{
+  background:rgba(100,255,218,0.1);
 }
 
-#home p {
-  max-width: 600px;
-  margin: 20px 0;
-  color: #8892b0;
+/* ===== Skills ===== */
+.skills{margin-top:20px}
+
+.skill{margin-bottom:18px}
+
+.skill span{display:block;margin-bottom:6px}
+
+.bar{
+  background:#233554;
+  height:8px;
+  border-radius:10px;
+  overflow:hidden;
 }
 
-.socials a {
-  margin-right: 20px;
-  font-size: 1.6em;
+.bar div{
+  height:100%;
+  background:#64ffda;
 }
 
-/* Button */
-.btn {
-  display: inline-block;
-  margin-top: 30px;
-  padding: 12px 20px;
-  border: 1px solid #64ffda;
-  color: #64ffda;
-  border-radius: 5px;
-  transition: 0.3s;
+/* ===== Cards ===== */
+.cards{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:25px;
 }
 
-.btn:hover {
-  background: rgba(100,255,218,0.1);
+.card{
+  background:#112240;
+  padding:25px;
+  border-radius:8px;
+  transition:0.3s;
 }
 
-/* Skills */
-.skills {
-  max-width: 600px;
+.card:hover{
+  transform:translateY(-6px);
 }
 
-.skill {
-  margin-bottom: 15px;
+.card h3{
+  color:#64ffda;
+  margin-bottom:10px;
 }
 
-.skill span {
-  color: #ccd6f6;
+/* ===== Footer ===== */
+footer{
+  text-align:center;
+  padding:30px;
+  color:#8892b0;
+  background:#020c1b;
 }
 
-.bar {
-  background: #233554;
-  height: 8px;
-  border-radius: 10px;
-  overflow: hidden;
-}
-
-.bar div {
-  height: 100%;
-  background: #64ffda;
-}
-
-/* Cards */
-.cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 20px;
-}
-
-.card {
-  background: #112240;
-  padding: 20px;
-  border-radius: 8px;
-  transition: 0.3s;
-}
-
-.card:hover {
-  transform: translateY(-5px);
-}
-
-.card h3 {
-  color: #64ffda;
-  margin-bottom: 10px;
-}
-
-/* Footer */
-footer {
-  text-align: center;
-  padding: 30px;
-  color: #8892b0;
-  background: #020c1b;
-}
-
-/* Responsive */
-@media(max-width: 768px) {
-  nav {
-    width: 60px;
-  }
-  main {
-    margin-left: 60px;
-  }
-  section {
-    padding: 60px 30px;
-  }
+/* ===== Responsive ===== */
+@media(max-width:768px){
+  nav{width:60px}
+  main{margin-left:60px}
+  section{padding:70px 30px}
+  h1{font-size:2.2rem}
 }
 </style>
 </head>
@@ -204,21 +185,20 @@ footer {
 
 <!-- Home -->
 <section id="home">
-  <h1>Hi, I'm Waruni.</h1>
+  <h1>Hi, I’m Waruni.</h1>
   <p>
-    I’m an IT undergraduate at SLIIT with a passion for software engineering.
-    I enjoy building web applications, learning new technologies, and sharing my journey through writing.
+    I’m an Information Technology undergraduate at SLIIT who is passionate about
+    software engineering and web application development.
   </p>
 
   <div class="socials">
-  <a href="https://github.com/waruni-amanthi" target="_blank" rel="noopener">
-    <i class="fab fa-github"></i>
-  </a>
-
-  <a href="https://www.linkedin.com/in/waruni-amanthi-597190209/" target="_blank" rel="noopener">
-    <i class="fab fa-linkedin"></i>
-  </a>
-</div>
+    <a href="https://github.com/waruni-amanthi" target="_blank" rel="noopener">
+      <i class="fab fa-github"></i>
+    </a>
+    <a href="https://www.linkedin.com/in/waruni-amanthi-597190209/" target="_blank" rel="noopener">
+      <i class="fab fa-linkedin"></i>
+    </a>
+  </div>
 
   <a href="#about" class="btn">About Me</a>
 </section>
@@ -227,19 +207,16 @@ footer {
 <section id="about">
   <h2>About Me</h2>
   <p>
-    <p>
-      I am an Information Technology undergraduate at SLIIT with a strong interest in software engineering and web application development.
-      Alongside my academic studies, I currently work in a software development environment, where I gain practical industry exposure and
-      hands-on experience.
-      
-      I have developed a <b>web-based Inventory Management System</b> using web technologies, focusing on clean application structure,
-      CRUD operations, and real-world business requirements.
-      Through my work experience, I have improved my understanding of software development workflows, problem-solving,
-      and collaborating within a professional team.
-      
-      I am motivated to continuously learn, build meaningful projects, and grow into a skilled software engineer by combining
-      academic knowledge with practical industry experience.
-    </p>
+    I am an Information Technology undergraduate at SLIIT with a strong interest in
+    software engineering and web development. Alongside my academic studies,
+    I currently work in a software development environment, gaining hands-on
+    industry experience.
+  </p>
+  <p>
+    I have developed a <b>web-based Inventory Management System</b>, focusing on
+    clean architecture, CRUD operations, and real-world business requirements.
+    My goal is to grow into a skilled software engineer by combining academic
+    knowledge with practical experience.
   </p>
 </section>
 
@@ -253,12 +230,12 @@ footer {
       <div class="bar"><div style="width:80%"></div></div>
     </div>
     <div class="skill">
-      <span>Odoo ERP</span>
-      <div class="bar"><div style="width:70%"></div></div>
-    </div>
-    <div class="skill">
       <span>CRUD Operations</span>
       <div class="bar"><div style="width:75%"></div></div>
+    </div>
+    <div class="skill">
+      <span>Inventory Management Systems</span>
+      <div class="bar"><div style="width:70%"></div></div>
     </div>
     <div class="skill">
       <span>Problem Solving</span>
@@ -273,12 +250,19 @@ footer {
 
   <div class="cards">
     <div class="card">
-      <h3>Inventory Management Module</h3>
-      <p>Odoo-based CRUD system to manage products and stock.</p>
+      <h3>Inventory Management Web Application</h3>
+      <p>
+        A web-based system to manage products, stock levels, and basic reporting
+        using CRUD operations.
+      </p>
     </div>
+
     <div class="card">
-      <h3>Personal Portfolio</h3>
-      <p>This website built using HTML, CSS, and GitHub Pages.</p>
+      <h3>Personal Portfolio & Blog</h3>
+      <p>
+        A responsive portfolio website built with HTML, CSS, and JavaScript,
+        hosted on GitHub Pages.
+      </p>
     </div>
   </div>
 </section>
@@ -289,12 +273,18 @@ footer {
 
   <div class="cards">
     <div class="card">
-      <h3>Starting My Software Engineering Journey</h3>
-      <p>Writing about my learning path as an IT undergraduate.</p>
+      <h3>My Journey as an IT Undergraduate</h3>
+      <p>
+        Sharing my learning experience, challenges, and growth as a student
+        in software engineering.
+      </p>
     </div>
+
     <div class="card">
-      <h3>Understanding CRUD Operations</h3>
-      <p>What I learned while building my first inventory module.</p>
+      <h3>Building My First Inventory System</h3>
+      <p>
+        Lessons learned while designing and developing a real-world web application.
+      </p>
     </div>
   </div>
 </section>
@@ -303,7 +293,7 @@ footer {
 <section id="contact">
   <h2>Contact</h2>
   <p>
-    Feel free to connect with me on GitHub or LinkedIn.
+    Feel free to connect with me through GitHub or LinkedIn.
     <br><br>
     📧 Professional Email: youremail@example.com
   </p>
@@ -316,16 +306,34 @@ footer {
 </footer>
 
 <script>
-const sections = document.querySelectorAll("section");
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
+/* Fade-in */
+const sections=document.querySelectorAll("section");
+const observer=new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
       entry.target.classList.add("visible");
     }
   });
-}, { threshold: 0.2 });
+},{threshold:0.2});
+sections.forEach(sec=>observer.observe(sec));
 
-sections.forEach(section => observer.observe(section));
+/* Active nav highlight */
+const navLinks=document.querySelectorAll("nav a");
+window.addEventListener("scroll",()=>{
+  let current="";
+  sections.forEach(section=>{
+    const sectionTop=section.offsetTop-150;
+    if(scrollY>=sectionTop){
+      current=section.getAttribute("id");
+    }
+  });
+  navLinks.forEach(link=>{
+    link.classList.remove("active");
+    if(link.getAttribute("href")==="#"+current){
+      link.classList.add("active");
+    }
+  });
+});
 </script>
 
 </body>
