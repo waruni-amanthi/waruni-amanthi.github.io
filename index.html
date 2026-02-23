@@ -15,6 +15,7 @@
   nav{position:fixed; left:0; top:0; width:80px; height:100%; background:#fff; box-shadow:2px 0 5px rgba(0,0,0,0.1); display:flex; flex-direction:column; align-items:center; padding-top:20px; z-index:1000;}
   nav a{margin:20px 0; color:#333; font-size:1.5em; transition:0.3s;}
   nav a:hover{color:#4B9CD3;}
+  nav a.active i { color: #4B9CD3; transform: scale(1.3); transition:0.3s; }
 
   /* Sections */
   main{margin-left:80px;}
@@ -45,15 +46,15 @@
   /* Projects Section */
   #projects h2{text-align:center;margin-bottom:30px;}
   .projects-container{display:flex; flex-wrap:wrap; justify-content:center; gap:20px;}
-  .project-card{background:#fff; padding:20px; max-width:300px; border-radius:10px; box-shadow:0 2px 6px rgba(0,0,0,0.1); transition:0.3s;}
-  .project-card:hover{transform:translateY(-5px); box-shadow:0 5px 12px rgba(0,0,0,0.2);}
+  .project-card{background:#fff; padding:20px; max-width:300px; border-radius:10px; box-shadow:0 2px 6px rgba(0,0,0,0.1); transition: all 0.5s ease;}
+  .project-card:hover{transform:translateY(-10px); box-shadow:0 10px 20px rgba(0,0,0,0.2);}
   .project-card img{width:100%; border-radius:10px;}
   .project-card h3{color:#4B9CD3;margin:10px 0;}
 
   /* Blog Section */
   #blog h2{text-align:center;margin-bottom:30px;}
-  .blog-post{background:#f5f5f5;margin:20px; padding:20px; max-width:700px; border-radius:10px; box-shadow:0 2px 6px rgba(0,0,0,0.1); transition:0.3s;}
-  .blog-post:hover{transform:translateY(-5px); box-shadow:0 5px 12px rgba(0,0,0,0.2);}
+  .blog-post{background:#f5f5f5;margin:20px; padding:20px; max-width:700px; border-radius:10px; box-shadow:0 2px 6px rgba(0,0,0,0.1); transition: all 0.5s ease;}
+  .blog-post:hover{transform:translateY(-10px); box-shadow:0 10px 20px rgba(0,0,0,0.2);}
   .blog-post h3{color:#4B9CD3;margin-bottom:10px;}
 
   /* Contact Section */
@@ -77,12 +78,12 @@
 
   <!-- Sidebar Navigation -->
   <nav>
-    <a href="#home" title="Home"><i class="fas fa-home"></i></a>
-    <a href="#about" title="About"><i class="fas fa-user"></i></a>
-    <a href="#skills" title="Skills"><i class="fas fa-code"></i></a>
-    <a href="#projects" title="Projects"><i class="fas fa-folder-open"></i></a>
-    <a href="#blog" title="Blog"><i class="fas fa-blog"></i></a>
-    <a href="#contact" title="Contact"><i class="fas fa-envelope"></i></a>
+    <a href="#home" data-section="home" title="Home"><i class="fas fa-home"></i></a>
+    <a href="#about" data-section="about" title="About"><i class="fas fa-user"></i></a>
+    <a href="#skills" data-section="skills" title="Skills"><i class="fas fa-code"></i></a>
+    <a href="#projects" data-section="projects" title="Projects"><i class="fas fa-folder-open"></i></a>
+    <a href="#blog" data-section="blog" title="Blog"><i class="fas fa-blog"></i></a>
+    <a href="#contact" data-section="contact" title="Contact"><i class="fas fa-envelope"></i></a>
   </nav>
 
   <main>
@@ -111,19 +112,19 @@
       <div class="skills-container">
         <div class="skill-bar">
           <div class="skill-title">Web Development</div>
-          <div class="skill-progress"><div style="width:80%"></div></div>
+          <div class="skill-progress"><div data-width="80%"></div></div>
         </div>
         <div class="skill-bar">
           <div class="skill-title">Odoo ERP</div>
-          <div class="skill-progress"><div style="width:70%"></div></div>
+          <div class="skill-progress"><div data-width="70%"></div></div>
         </div>
         <div class="skill-bar">
           <div class="skill-title">CRUD Operations</div>
-          <div class="skill-progress"><div style="width:75%"></div></div>
+          <div class="skill-progress"><div data-width="75%"></div></div>
         </div>
         <div class="skill-bar">
           <div class="skill-title">Problem Solving</div>
-          <div class="skill-progress"><div style="width:85%"></div></div>
+          <div class="skill-progress"><div data-width="85%"></div></div>
         </div>
       </div>
     </section>
@@ -174,15 +175,64 @@
     <p>© 2026 Waruni Amanthi | Designed & Built by Me</p>
   </footer>
 
-  <!-- JS for fade-in animation -->
+  <!-- JS for fade-in, skill bars, cards, and sidebar scroll indicator -->
   <script>
-    const sections=document.querySelectorAll('section');
-    const observer=new IntersectionObserver(entries=>{
-      entries.forEach(entry=>{
-        if(entry.isIntersecting){entry.target.classList.add('visible');}
+    const sections = document.querySelectorAll('section');
+    const navLinks = document.querySelectorAll('nav a');
+
+    // Fade-in sections
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting){ entry.target.classList.add('visible'); }
       });
-    },{threshold:0.2});
-    sections.forEach(section=>observer.observe(section));
+    }, {threshold:0.2});
+    sections.forEach(section => observer.observe(section));
+
+    // Skill bars animation
+    const skillsSection = document.getElementById('skills');
+    const skillBars = document.querySelectorAll('.skill-progress div');
+    const skillsObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting){
+          skillBars.forEach(bar => {
+            bar.style.width = bar.getAttribute('data-width');
+          });
+        }
+      });
+    }, { threshold: 0.5 });
+    skillsObserver.observe(skillsSection);
+
+    // Project & Blog cards animation
+    const cards = document.querySelectorAll('.project-card, .blog-post');
+    const cardsObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting){
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, { threshold: 0.2 });
+    cards.forEach(card => {
+      card.style.opacity = '0';
+      card.style.transform = 'translateY(50px)';
+      cardsObserver.observe(card);
+    });
+
+    // Sidebar scroll indicator
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop - 100;
+        const sectionHeight = section.clientHeight;
+        if(pageYOffset >= sectionTop && pageYOffset < sectionTop + sectionHeight){
+          current = section.getAttribute('id');
+        }
+      });
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if(link.dataset.section === current){ link.classList.add('active'); }
+      });
+    });
   </script>
 </body>
 </html>
