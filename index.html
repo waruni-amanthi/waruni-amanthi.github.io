@@ -1,238 +1,317 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Waruni Amanthi | Portfolio & Blog</title>
+
+<!-- Fonts & Icons -->
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
 <style>
-  *{margin:0;padding:0;box-sizing:border-box;}
-  body{font-family:'Inter',sans-serif; line-height:1.6; color:#333; background:#f5f5f5; scroll-behavior:smooth;}
-  a{text-decoration:none; color:inherit;}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-  /* Sidebar Navigation */
-  nav{position:fixed; left:0; top:0; width:80px; height:100%; background:#fff; box-shadow:2px 0 5px rgba(0,0,0,0.1); display:flex; flex-direction:column; align-items:center; padding-top:20px; z-index:1000;}
-  nav a{margin:20px 0; color:#333; font-size:1.5em; transition:0.3s;}
-  nav a:hover{color:#4B9CD3;}
-  nav a.active i { color: #4B9CD3; transform: scale(1.3); transition:0.3s; }
+body {
+  font-family: 'Inter', sans-serif;
+  background: #0a192f;
+  color: #ccd6f6;
+  scroll-behavior: smooth;
+}
 
-  /* Sections */
-  main{margin-left:80px;}
-  section{min-height:100vh; display:flex; flex-direction:column; justify-content:center; align-items:center; padding:60px 20px; opacity:0; transform: translateY(50px); transition: all 1s ease;}
-  section.visible{opacity:1; transform: translateY(0);}
-  
-  /* Hero */
-  #home{background: linear-gradient(135deg,#f5f5f5,#e0f0ff); text-align:center;}
-  .profile-img{width:150px;height:150px;border-radius:50%;border:4px solid #4B9CD3;object-fit:cover;margin-bottom:20px;}
-  h1{font-size:3em;color:#4B9CD3;margin-bottom:10px;}
-  p.tagline{font-size:1.2em; margin-bottom:20px;}
-  .btn{padding:10px 20px;background:#4B9CD3;color:#fff;border-radius:5px;font-weight:600;transition:0.3s;}
-  .btn:hover{background:#357ab7;}
+a {
+  text-decoration: none;
+  color: inherit;
+}
 
-  /* Social Icons */
-  .social-icons{display:flex;gap:15px;margin-bottom:20px;}
-  .social-icons a{font-size:1.5em;color:#333;transition:0.3s;}
-  .social-icons a:hover{color:#4B9CD3;}
+/* Sidebar */
+nav {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 90px;
+  height: 100vh;
+  background: #020c1b;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 30px;
+}
 
-  /* Skills Section */
-  #skills h2{text-align:center;margin-bottom:30px;}
-  .skills-container{width:80%; max-width:700px;}
-  .skill-bar{margin-bottom:15px;}
-  .skill-title{font-weight:600;margin-bottom:5px;}
-  .skill-progress{width:100%; background:#ddd; border-radius:5px; overflow:hidden;}
-  .skill-progress div{height:20px; width:0; background:#4B9CD3; border-radius:5px; transition:1s;}
+nav a {
+  margin: 20px 0;
+  font-size: 1.4em;
+  color: #8892b0;
+  transition: 0.3s;
+}
 
-  /* Projects Section */
-  #projects h2{text-align:center;margin-bottom:30px;}
-  .projects-container{display:flex; flex-wrap:wrap; justify-content:center; gap:20px;}
-  .project-card{background:#fff; padding:20px; max-width:300px; border-radius:10px; box-shadow:0 2px 6px rgba(0,0,0,0.1); transition: all 0.5s ease;}
-  .project-card:hover{transform:translateY(-10px); box-shadow:0 10px 20px rgba(0,0,0,0.2);}
-  .project-card img{width:100%; border-radius:10px;}
-  .project-card h3{color:#4B9CD3;margin:10px 0;}
+nav a:hover {
+  color: #64ffda;
+}
 
-  /* Blog Section */
-  #blog h2{text-align:center;margin-bottom:30px;}
-  .blog-post{background:#f5f5f5;margin:20px; padding:20px; max-width:700px; border-radius:10px; box-shadow:0 2px 6px rgba(0,0,0,0.1); transition: all 0.5s ease;}
-  .blog-post:hover{transform:translateY(-10px); box-shadow:0 10px 20px rgba(0,0,0,0.2);}
-  .blog-post h3{color:#4B9CD3;margin-bottom:10px;}
+/* Main Layout */
+main {
+  margin-left: 90px;
+}
 
-  /* Contact Section */
-  #contact h2{text-align:center;margin-bottom:20px;}
-  #contact p{text-align:center;}
+section {
+  min-height: 100vh;
+  padding: 80px 60px;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: 1s;
+}
 
-  /* Footer */
-  footer{background:#333;color:#fff;text-align:center;padding:20px;}
-  footer a{color:#4B9CD3;}
+section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
 
-  /* Responsive */
-  @media(max-width:768px){
-    nav{width:60px;}
-    main{margin-left:60px;}
-    h1{font-size:2.2em;}
-    .projects-container{flex-direction:column;align-items:center;}
+/* Headings */
+h1, h2 {
+  color: #64ffda;
+}
+
+h2 {
+  margin-bottom: 20px;
+}
+
+/* Home */
+#home {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+#home h1 {
+  font-size: 3rem;
+}
+
+#home p {
+  max-width: 600px;
+  margin: 20px 0;
+  color: #8892b0;
+}
+
+.socials a {
+  margin-right: 20px;
+  font-size: 1.6em;
+}
+
+/* Button */
+.btn {
+  display: inline-block;
+  margin-top: 30px;
+  padding: 12px 20px;
+  border: 1px solid #64ffda;
+  color: #64ffda;
+  border-radius: 5px;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  background: rgba(100,255,218,0.1);
+}
+
+/* Skills */
+.skills {
+  max-width: 600px;
+}
+
+.skill {
+  margin-bottom: 15px;
+}
+
+.skill span {
+  color: #ccd6f6;
+}
+
+.bar {
+  background: #233554;
+  height: 8px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.bar div {
+  height: 100%;
+  background: #64ffda;
+}
+
+/* Cards */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+}
+
+.card {
+  background: #112240;
+  padding: 20px;
+  border-radius: 8px;
+  transition: 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.card h3 {
+  color: #64ffda;
+  margin-bottom: 10px;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 30px;
+  color: #8892b0;
+  background: #020c1b;
+}
+
+/* Responsive */
+@media(max-width: 768px) {
+  nav {
+    width: 60px;
   }
+  main {
+    margin-left: 60px;
+  }
+  section {
+    padding: 60px 30px;
+  }
+}
 </style>
 </head>
+
 <body>
 
-  <!-- Sidebar Navigation -->
-  <nav>
-    <a href="#home" data-section="home" title="Home"><i class="fas fa-home"></i></a>
-    <a href="#about" data-section="about" title="About"><i class="fas fa-user"></i></a>
-    <a href="#skills" data-section="skills" title="Skills"><i class="fas fa-code"></i></a>
-    <a href="#projects" data-section="projects" title="Projects"><i class="fas fa-folder-open"></i></a>
-    <a href="#blog" data-section="blog" title="Blog"><i class="fas fa-blog"></i></a>
-    <a href="#contact" data-section="contact" title="Contact"><i class="fas fa-envelope"></i></a>
-  </nav>
+<!-- Sidebar -->
+<nav>
+  <a href="#home"><i class="fas fa-home"></i></a>
+  <a href="#about"><i class="fas fa-user"></i></a>
+  <a href="#skills"><i class="fas fa-code"></i></a>
+  <a href="#projects"><i class="fas fa-folder"></i></a>
+  <a href="#blog"><i class="fas fa-blog"></i></a>
+  <a href="#contact"><i class="fas fa-envelope"></i></a>
+</nav>
 
-  <main>
-    <!-- Home Section -->
-    <section id="home">
-      <img src="profile.jpg" alt="Profile Image" class="profile-img">
-      <h1>Waruni Amanthi</h1>
-      <p class="tagline">IT Undergraduate at SLIIT | Aspiring Software Engineer</p>
-      <div class="social-icons">
-        <a href="https://github.com/waruni-amanthi" target="_blank"><i class="fab fa-github"></i></a>
-        <a href="https://www.linkedin.com/in/yourlinkedin" target="_blank"><i class="fab fa-linkedin"></i></a>
-        <a href="mailto:youremail@example.com"><i class="fas fa-envelope"></i></a>
-      </div>
-      <a href="#about" class="btn">Learn More</a>
-    </section>
+<main>
 
-    <!-- About Section -->
-    <section id="about">
-      <h2>About Me</h2>
-      <p>I am an IT undergraduate at SLIIT passionate about software engineering. I enjoy developing web applications, working with Odoo ERP, and continuously learning new technologies. My goal is to build real-world projects and contribute to the tech community.</p>
-    </section>
+<!-- Home -->
+<section id="home">
+  <h1>Hi, I'm Waruni.</h1>
+  <p>
+    I’m an IT undergraduate at SLIIT with a passion for software engineering.
+    I enjoy building web applications, learning new technologies, and sharing my journey through writing.
+  </p>
 
-    <!-- Skills Section -->
-    <section id="skills">
-      <h2>Skills & Talents</h2>
-      <div class="skills-container">
-        <div class="skill-bar">
-          <div class="skill-title">Web Development</div>
-          <div class="skill-progress"><div data-width="80%"></div></div>
-        </div>
-        <div class="skill-bar">
-          <div class="skill-title">Odoo ERP</div>
-          <div class="skill-progress"><div data-width="70%"></div></div>
-        </div>
-        <div class="skill-bar">
-          <div class="skill-title">CRUD Operations</div>
-          <div class="skill-progress"><div data-width="75%"></div></div>
-        </div>
-        <div class="skill-bar">
-          <div class="skill-title">Problem Solving</div>
-          <div class="skill-progress"><div data-width="85%"></div></div>
-        </div>
-      </div>
-    </section>
+  <div class="socials">
+    <a href="https://github.com/waruniamanthi7-stack" target="_blank"><i class="fab fa-github"></i></a>
+    <a href="#"><i class="fab fa-linkedin"></i></a>
+  </div>
 
-    <!-- Projects Section -->
-    <section id="projects">
-      <h2>Projects</h2>
-      <div class="projects-container">
-        <div class="project-card">
-          <img src="project1.png" alt="Inventory Module">
-          <h3>Inventory Management Module</h3>
-          <p>Developed CRUD system in Odoo to manage products, stock, and locations.</p>
-          <a href="https://github.com/waruni-amanthi" target="_blank" class="btn">View on GitHub</a>
-        </div>
-        <div class="project-card">
-          <img src="project2.png" alt="Portfolio Website">
-          <h3>Personal Portfolio Website</h3>
-          <p>Created a single-page portfolio blog to showcase projects and skills.</p>
-          <a href="https://github.com/waruni-amanthi" target="_blank" class="btn">View on GitHub</a>
-        </div>
-      </div>
-    </section>
+  <a href="#about" class="btn">About Me</a>
+</section>
 
-    <!-- Blog Section -->
-    <section id="blog">
-      <h2>My Blog</h2>
-      <div class="blog-post">
-        <h3>My First Blog Post</h3>
-        <p><b>Date:</b> Feb 2026</p>
-        <p>This blog documents my journey as an IT student at SLIIT. I am learning software engineering, working on projects in Odoo ERP, and exploring modern technologies.</p>
-      </div>
-      <div class="blog-post">
-        <h3>Learning CRUD Operations</h3>
-        <p><b>Date:</b> Feb 2026</p>
-        <p>I recently developed a simple Inventory Management Module that uses CRUD operations to manage products, stock, and locations. Writing about this helps me reflect and share knowledge with others.</p>
-      </div>
-    </section>
+<!-- About -->
+<section id="about">
+  <h2>About Me</h2>
+  <p>
+    I am currently studying Information Technology at SLIIT.
+    I work with web technologies and ERP systems like Odoo,
+    and I aim to become a skilled software engineer by building real-world projects.
+  </p>
+</section>
 
-    <!-- Contact Section -->
-    <section id="contact">
-      <h2>Contact Me</h2>
-      <p>If you want to connect, email me at <a href="mailto:youremail@example.com">youremail@example.com</a> or visit my <a href="https://github.com/waruni-amanthi" target="_blank">GitHub</a>.</p>
-    </section>
-  </main>
+<!-- Skills -->
+<section id="skills">
+  <h2>Skills</h2>
 
-  <!-- Footer -->
-  <footer>
-    <p>© 2026 Waruni Amanthi | Designed & Built by Me</p>
-  </footer>
+  <div class="skills">
+    <div class="skill">
+      <span>Web Development</span>
+      <div class="bar"><div style="width:80%"></div></div>
+    </div>
+    <div class="skill">
+      <span>Odoo ERP</span>
+      <div class="bar"><div style="width:70%"></div></div>
+    </div>
+    <div class="skill">
+      <span>CRUD Operations</span>
+      <div class="bar"><div style="width:75%"></div></div>
+    </div>
+    <div class="skill">
+      <span>Problem Solving</span>
+      <div class="bar"><div style="width:85%"></div></div>
+    </div>
+  </div>
+</section>
 
-  <!-- JS for fade-in, skill bars, cards, and sidebar scroll indicator -->
-  <script>
-    const sections = document.querySelectorAll('section');
-    const navLinks = document.querySelectorAll('nav a');
+<!-- Projects -->
+<section id="projects">
+  <h2>Projects</h2>
 
-    // Fade-in sections
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if(entry.isIntersecting){ entry.target.classList.add('visible'); }
-      });
-    }, {threshold:0.2});
-    sections.forEach(section => observer.observe(section));
+  <div class="cards">
+    <div class="card">
+      <h3>Inventory Management Module</h3>
+      <p>Odoo-based CRUD system to manage products and stock.</p>
+    </div>
+    <div class="card">
+      <h3>Personal Portfolio</h3>
+      <p>This website built using HTML, CSS, and GitHub Pages.</p>
+    </div>
+  </div>
+</section>
 
-    // Skill bars animation
-    const skillsSection = document.getElementById('skills');
-    const skillBars = document.querySelectorAll('.skill-progress div');
-    const skillsObserver = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if(entry.isIntersecting){
-          skillBars.forEach(bar => {
-            bar.style.width = bar.getAttribute('data-width');
-          });
-        }
-      });
-    }, { threshold: 0.5 });
-    skillsObserver.observe(skillsSection);
+<!-- Blog -->
+<section id="blog">
+  <h2>Blog</h2>
 
-    // Project & Blog cards animation
-    const cards = document.querySelectorAll('.project-card, .blog-post');
-    const cardsObserver = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if(entry.isIntersecting){
-          entry.target.style.opacity = '1';
-          entry.target.style.transform = 'translateY(0)';
-        }
-      });
-    }, { threshold: 0.2 });
-    cards.forEach(card => {
-      card.style.opacity = '0';
-      card.style.transform = 'translateY(50px)';
-      cardsObserver.observe(card);
-    });
+  <div class="cards">
+    <div class="card">
+      <h3>Starting My Software Engineering Journey</h3>
+      <p>Writing about my learning path as an IT undergraduate.</p>
+    </div>
+    <div class="card">
+      <h3>Understanding CRUD Operations</h3>
+      <p>What I learned while building my first inventory module.</p>
+    </div>
+  </div>
+</section>
 
-    // Sidebar scroll indicator
-    window.addEventListener('scroll', () => {
-      let current = '';
-      sections.forEach(section => {
-        const sectionTop = section.offsetTop - 100;
-        const sectionHeight = section.clientHeight;
-        if(pageYOffset >= sectionTop && pageYOffset < sectionTop + sectionHeight){
-          current = section.getAttribute('id');
-        }
-      });
-      navLinks.forEach(link => {
-        link.classList.remove('active');
-        if(link.dataset.section === current){ link.classList.add('active'); }
-      });
-    });
-  </script>
+<!-- Contact -->
+<section id="contact">
+  <h2>Contact</h2>
+  <p>
+    Feel free to connect with me on GitHub or LinkedIn.
+    <br><br>
+    📧 Professional Email: youremail@example.com
+  </p>
+</section>
+
+</main>
+
+<footer>
+  © 2026 Waruni Amanthi | Built with GitHub Pages
+</footer>
+
+<script>
+const sections = document.querySelectorAll("section");
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("visible");
+    }
+  });
+}, { threshold: 0.2 });
+
+sections.forEach(section => observer.observe(section));
+</script>
+
 </body>
 </html>
